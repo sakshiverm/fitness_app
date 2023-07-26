@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module FitnessAppChallenge
   class Application < Rails::Application
+    Rails.application.config.active_storage.variant_processor = :mini_magick
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.time_zone = 'Asia/Kolkata'

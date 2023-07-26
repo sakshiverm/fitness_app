@@ -12,7 +12,7 @@
     <p><strong>Description:</strong> <%= @exercise.description %></p>
     <p><strong>Image:</strong>
      <% if @exercise.image.attached? %>
-       <%= image_tag @exercise.image %>
+     <%= image_tag @exercise.image.variant(resize_to_limit: [500, 500]) %>
      <% end %>
     </p>
     <%= link_to 'New Exercise', new_workout_plan_exercise_path(@exercise.workout_plan), class: "btn btn-primary" %>
