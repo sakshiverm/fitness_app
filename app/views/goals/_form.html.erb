@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Goal</title>
+  <%= stylesheet_link_tag '_form_goal' %>
+</head>
+<body>
+  <div class="container">
+    <h1>New Goal</h1>
+
+    <%= form_with(model: @goal, url: goals_path, local: true, class: "form") do |form| %>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+      <br>
+
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+      <br>
+
+      <div class="field">
+        <%= form.label :duration %>
+        <%= form.text_field :duration, class: "form-control" %>
+      </div>
+      <br>
+
+      <%= form.submit "Create Goal", class: "btn btn-primary" %>
+    <% end %>
+
+    <%= link_to 'Back', goals_path, class: "btn .btn-secondary" %>
+  </div>
+</body>
+</html>

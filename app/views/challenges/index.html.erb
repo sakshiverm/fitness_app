@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome Dashboard</title>
+  <%= stylesheet_link_tag 'challenge_index' %>
+</head>
+<body>
+  <div class="container">
+    <h1>Challenges</h1>
+
+    <ul class="challenges-list">
+      <% @challenges.each do |challenge| %>
+        <li class="challenge-item">
+          <%= link_to challenge.name, challenge, class: "challenge-link" %>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= link_to 'New Challenge', new_challenge_path, class: "new-challenge-link" %>
+  </div>
+</body>
+</html>

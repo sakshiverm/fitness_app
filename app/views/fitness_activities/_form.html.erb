@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Activity Form</title>
+  <%= stylesheet_link_tag '_form_fitness_activity' %>
+</head>
+<body>
+  <div class="container">
+    <h1>Fitness Activity Form</h1>
+    <%= form_with(model: @fitness_activity, url: @fitness_activity.new_record? ? fitness_activities_path : fitness_activity_path(@fitness_activity), local: true) do |form| %>
+      <% if @fitness_activity.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@fitness_activity.errors.count, "error") %> prohibited this challenge from being saved:</h2>
+
+          <ul>
+            <% @fitness_activity.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :steps_taken %>
+        <%= form.number_field :steps_taken %>
+      </div>
+      <br>
+
+      <div class="field">
+        <%= form.label :calories_burned %>
+        <%= form.number_field :calories_burned %>
+      </div>
+      <br>
+
+      <div class="field">
+        <%= form.label :workout_duration %>
+        <%= form.text_field :workout_duration %>
+      </div>
+      <br>
+
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+</body>
+</html>

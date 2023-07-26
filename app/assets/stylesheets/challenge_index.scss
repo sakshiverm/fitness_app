@@ -1,0 +1,64 @@
+body {
+    background-image: url('/assets/istockphoto-1183038884-1024x1024.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 600px;
+    padding: 40px;
+    background-color: #B6D0E2;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .challenges-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  .challenge-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+  }
+  .challenge-item:hover {
+    background-color: #e9ecef;
+  }
+  .challenge-link {
+    flex: 1;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .challenge-link:hover {
+    color: #007bff;
+  }
+  .new-challenge-link {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .new-challenge-link:hover {
+    background-color: #0056b3;
+  }
+
+  

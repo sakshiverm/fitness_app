@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workout Plan Form</title>
+  <%= stylesheet_link_tag '_form_workout_plan' %>
+</head>
+<body>
+  <div class="container">
+    <h1>Workout Plan Form</h1>
+
+    <%= form_with(model: @workout_plan, url: @workout_plan.new_record? ? workout_plans_path : workout_plan_path(@workout_plan), local: true, class: "form") do |form| %>
+      <% if @workout_plan.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@workout_plan.errors.count, "error") %> prohibited this workout plan from being saved:</h2>
+
+          <ul>
+            <% @workout_plan.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= form.label :instructions %>
+        <%= form.text_field :instructions, class: "form-control" %>
+      </div>
+      <br>
+
+      <%= form.submit "Save", class: "btn btn-primary" %>
+      <%= link_to 'Back', workout_plans_path %>
+    <% end %>
+  </div>
+</body>
+</html>

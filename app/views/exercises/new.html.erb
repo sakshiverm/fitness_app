@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Exercise</title>
+  <%= stylesheet_link_tag 'exercise_new' %>
+</head>
+<body>
+  <div class="container">
+    <h1>Create Exercise</h1>
+
+    <%= form_with(model: @exercise, url: workout_plan_exercises_path(@exercise.workout_plan), local: true, class: "form") do |form| %>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+      <br>
+
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+      <br>
+
+      <div class="field">
+        <%= form.label :image %>
+        <%= form.file_field :image, class: "form-control" %>
+      </div>
+      <br>
+
+      <%= form.submit "Create", class: "btn btn-primary" %>
+    <% end %>
+
+    <%= link_to 'Back', @exercise.workout_plan %>
+  </div>
+</body>
+</html>
+

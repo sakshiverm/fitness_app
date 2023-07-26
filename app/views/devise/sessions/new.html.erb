@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css">
+  <style>
+    body {
+      # background-image: url('../../../assets/images/istockphoto-1183038884-1024x1024.jpg');
+      background-image: url('/assets/istockphoto-1183038884-1024x1024.jpg'); 
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: inline;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 400px;
+      padding: 30px;
+      background-color: #faebd7;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: blue;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+    }
+    .login-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .dashboard-heading {
+      color: navy;
+      display: inline;
+    }
+
+    .taskbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .taskbar a {
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    .taskbar a:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="taskbar">
+   <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+  </div>
+
+   <h1 class="text-center dashboard-heading">Welcome To The Log In Page!</h1>
+
+  <div class="container">
+    <% if user_signed_in? %>
+      <div> Welcome <%= current_user.email %> </div>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "login-btn" %>
+
+      <div>
+        <%= link_to "Challenges", challenges_path, class: "btn btn-primary" %>
+        <%= link_to "Goals", goals_path, class: "btn btn-primary" %>
+        <%= link_to "Fitness Activities", fitness_activities_path, class: "btn btn-primary" %>
+        <%= link_to "Show Workout plans", workout_plans_path, class: "btn btn-primary" %>
+      </div>
+    <% else %>
+      <div>
+        <h4>Please Log in</h4>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form" }) do |f| %>
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="form-group form-check">
+              <%= f.check_box :remember_me, class: "form-check-input" %>
+              <%= f.label :remember_me, class: "form-check-label" %>
+            </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= f.submit "Log in", class: "login-btn" %>
+          </div>
+        <% end %>
+        
+        
+      </div>
+    <% end %>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

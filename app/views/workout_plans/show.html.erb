@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workout Plan Details</title>
+  <%= stylesheet_link_tag 'workout_plan_show' %>
+</head>
+<body>
+  <div class="container">
+    <h1>Workout Plan Details</h1>
+
+    <p><strong>Workout Plan:</strong> <%= @workout_plan.instructions %></p>
+
+    <h2>Exercises</h2>
+    <ul>
+      <% @exercises.each do |exercise| %>
+        <li>
+          <%= link_to exercise.name, workout_plan_exercise_path(@workout_plan, exercise) %>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to 'New Exercise', new_workout_plan_exercise_path(@workout_plan), class: "btn btn-primary" %>
+    <%= link_to 'Edit', edit_workout_plan_path(@workout_plan), class: "btn btn-primary" %>
+    <%= link_to 'Back', workout_plans_path, class: "btn btn-primary" %>
+    <%= link_to 'Destroy', workout_plan_path(@workout_plan), method: :delete, data: { confirm: 'Are you sure you want to delete this workout plan?' }, class: "btn btn-primary" %>
+  </div>
+</body>
+</html>

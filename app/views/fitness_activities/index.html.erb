@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Activity</title>
+  <%= stylesheet_link_tag 'fitness_activity_index' %>
+</head>
+<body>
+  <div class="container">
+    <h1>Fitness Activity</h1>
+
+    <ul>
+      <% @fitness_activities.each do |fitness_activity| %>
+        <li><%= link_to fitness_activity.steps_taken, fitness_activity %></li><br>
+      <% end %>
+    </ul>
+
+    <div>
+      <%= link_to 'Create new activity', new_fitness_activity_path, class: "btn btn-primary" %>
+      <%= link_to 'New Goal', new_goal_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Goal</title>
+  <%= stylesheet_link_tag 'goal_index' %>
+</head>
+<body>
+  <div class="container">
+    <h1>New Goal</h1>
+
+    <%= form_with(model: @goal, url: goal_path(@goal), local: true, method: :patch) do |form| %>
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <%= form.label :duration %>
+        <%= form.text_field :duration, class: "form-control" %>
+      </div>
+      <br>
+
+      <%= form.submit class: "btn btn-primary" %>
+    <% end %>
+
+    <%= link_to 'Back', goals_path, class: "btn btn-secondary" %>
+  </div>
+</body>
+</html>

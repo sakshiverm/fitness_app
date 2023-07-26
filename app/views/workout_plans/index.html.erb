@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workout Plans</title>
+  <%= stylesheet_link_tag 'workout_plan_index' %>
+</head>
+<body>
+  <div class="container">
+    <h1>Workout Plans</h1>
+
+    <ul>
+      <% @workout_plans.each do |workout_plan| %>
+        <li><%= link_to workout_plan.id, workout_plan %></li><br>
+      <% end %>
+    </ul>
+
+    <%= link_to 'Create new workout plan', new_workout_plan_path, class: "btn btn-primary" %>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome Dashboard</title>
+  <%= stylesheet_link_tag 'dashboard_index' %>
+</head>
+<body>
+  <div class="dashboard-container">
+
+    <% if user_signed_in? %>
+      <div class="user-info"> Welcome <%= current_user.email %> </div>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "sign-out-btn" %>
+
+      <div class="dashboard-links">
+        <%= link_to "Challenges", challenges_path %>
+        <%= link_to "Goals", goals_path %>
+        <%= link_to "Fitness Activities", fitness_activities_path %>
+        <%= link_to "Show Workout plans", workout_plans_path %>
+      </div>
+    <% else %>
+      <h2 class="welcome-message">Log in</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group">
+            <%= f.check_box :remember_me, class: "form-check-input" %>
+            <%= f.label :remember_me, class: "form-check-label" %>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.submit "Log in", class: "login-btn" %>
+        </div>
+      <% end %>
+
+      <div class="login-links">
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
